@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import static android.R.layout.simple_list_item_1;
 
@@ -19,7 +21,7 @@ public class MainActivityFragment extends Fragment {
 
     private GridView gridview;
     private ArrayAdapter<String> names;
-    private ImageView iemgView;
+    private ImageView imgView;
 
     public MainActivityFragment() {
 
@@ -28,10 +30,10 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_main, container, false);
+        final View v = inflater.inflate(R.layout.fragment_main, container, false);
 
-        iemgView = (ImageView) v.findViewById(R.id.imgView);
-        iemgView.setImageDrawable(getResources().getDrawable(R.drawable.adele));
+        imgView = (ImageView) v.findViewById(R.id.imgView);
+        imgView.setImageDrawable(getResources().getDrawable(R.drawable.adele));
 
 
         names = new ArrayAdapter<String>(v.getContext(), simple_list_item_1);
@@ -44,6 +46,12 @@ public class MainActivityFragment extends Fragment {
         names.add("Richard Hammond");
         names.add("Obama");
         names.add("Trump");
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(v.getContext(),"Position Selected: " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return v;
 

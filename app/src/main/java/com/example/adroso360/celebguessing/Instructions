@@ -1,0 +1,17 @@
+Guess the celebrity app
+
+Technical purpose: Dynamically apply fragments to an activity depending on device orientation.
+
+Requirements:
+
+The app must include two fragments (check out the support screencast with a simple demo)
+A MainFragment - for the game play
+A SecondaryFragment - for game configuration
+When the app is in portrait mode, the MainActivity shows the app toolbar and the MainFragment - the app toolbar contains a settings button that opens up a SecondaryActivity that contains the SecondaryFragment
+When the app is displayed in landscape mode, both fragments are visible side-by-side - and the app toolbar must not be visible
+The MainFragment needs an ImageView and a GridView of items (2-6)
+Use the ImageView to display the face of a famous person
+The items should the names of different famous people
+The player wins but selecting the correct name for the currently displayed famous person from the list of names - use a Toast to inform the user when they are correct or incorrect
+Use a set of at least 5 famous people in your game
+The SecondaryFragment is used to select the number of names available in the GridView during gameplay
