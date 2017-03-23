@@ -1,6 +1,8 @@
 package com.example.adroso360.celebguessing;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -37,22 +39,25 @@ public class SecondaryFragment extends Fragment {
         octaGrid = (Button) v2.findViewById(R.id.button3);
 
         triGrid.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
-                gridAmount = 3;
+                MainActivityFragment.updateView(3);
+
             }
         });
         pentaGrid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gridAmount = 5;
+                MainActivityFragment.updateView(5);
 
             }
         });
         octaGrid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gridAmount = 8;
+                MainActivityFragment.updateView(8);
 
             }
         });

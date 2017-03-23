@@ -1,6 +1,5 @@
 package com.example.adroso360.celebguessing;
 
-
 import android.content.res.TypedArray;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -13,8 +12,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.net.URISyntaxException;
 import java.util.Objects;
-
 import static android.R.layout.simple_list_item_1;
 
 
@@ -23,8 +22,8 @@ import static android.R.layout.simple_list_item_1;
  */
 public class MainActivityFragment extends Fragment {
 
-    private GridView gridview;
-    private ArrayAdapter<String> names;
+    private static GridView gridview;
+    private static ArrayAdapter<String> names;
     private ImageView imgView;
     public int currentPicture;
     private int gridSum = 3;
@@ -38,11 +37,13 @@ public class MainActivityFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_main, container, false);
         imgView = (ImageView) v.findViewById(R.id.imgView);
         randomImage();
+
         try {
             gridSum = SecondaryFragment.gridAmount;
         } catch (Exception e){
             gridSum = 3;
         }
+
         names = new ArrayAdapter<String>(v.getContext(), simple_list_item_1);
         gridview = (GridView) v.findViewById(R.id.gridView);
         gridview.setAdapter(names);
@@ -68,24 +69,7 @@ public class MainActivityFragment extends Fragment {
             names.add("Jason Holdsworth");
             names.add("Adam");
         }
-
-//        names = new ArrayAdapter<String>(v.getContext(), simple_list_item_1);
-//        gridview = (GridView) v.findViewById(R.id.gridView);
-//        gridview.setAdapter(names);
-//
-//
-//        names.add("Adele");
-//        names.add("James Cordon");
-//        names.add("Robert Downey Jr");
-//        names.add("Richard Hammond");
-//        names.add("Obama");
-//        names.add("Trump");
-//        names.add("Homer Simpson");
-//        names.add("Jason Holdsworth");
-//        names.add("Adam");
-
-
-
+        updateView(5);
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -117,5 +101,33 @@ public class MainActivityFragment extends Fragment {
         //System.out.println(choice);
         imgView.setImageResource(images.getResourceId(choice, R.drawable.adele)); //adele on default
         images.recycle();
+    }
+    public static void updateView(int gridSum){
+
+        gridview.setAdapter(names);
+        names.clear();
+        if (gridSum==3){
+            names.add("Adele");
+            names.add("James Cordon");
+            names.add("Robert Downey Jr");
+        }else if(gridSum == 5){
+            names.add("Adele");
+            names.add("James Cordon");
+            names.add("Robert Downey Jr");
+            names.add("Richard Hammond");
+            names.add("Obama");
+        }else if(gridSum == 8){
+            names.add("Adele");
+            names.add("James Cordon");
+            names.add("Robert Downey Jr");
+            names.add("Richard Hammond");
+            names.add("Obama");
+            names.add("Trump");
+            names.add("Homer Simpson");
+            names.add("Jason Holdsworth");
+            names.add("Adam");
+        }
+
+
     }
 }
